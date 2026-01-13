@@ -1,0 +1,39 @@
+# Baza danych
+
+## Nazwa bazy danych
+- weather
+
+## Tabele
+
+- spaceweather - cała pogoda w kosmosie
+- earthweather - cała pogoda na Ziemi
+- dates - zmieniłem planowaną relację bo nie działała - kluczami obcymi są daty - dzięki temu mamy prostą relację i trzy tabele, tak jak było wymagane
+- earthweathercombined - zostawiłem wg. mnie najważniejsze kolumny, te dane będziemy wyświetlać
+- spaceweathercombined - tak jak wyżej
+
+## Raport
+Nie dodawałem na razie tabeli z raportem - jeśli zajdzie potrzeba możemy ją dodać.
+
+# Export
+- możliwy jest do plików XML, JSON, SQL
+- mamy już wgląd jak powinny wyglądać pliki które mamy eksportować, będzie trzeba je odtworzyć za pomocą kodu
+
+# Import
+- możliwy jest z plików XML, JSON, SQL
+- na podstawie bazy stworzone są już pliki gotowe do importu - mamy wgląd jak może to wyglądać
+
+CZYLI - najpierw trzeba zrobić poprawnie eksport bazy danych, a potem dopiero import
+UWAGA - tabela earthweather jest naprawdę spora i może trochę "zamulać" naszą pracę - jeśli zajdzie potrzeba warto ją uszczuplić
+
+# Pliki
+Stworzyłem gotową dla nas bazę danych na jakiej mamy pracować - udało mi się zaimportować poprawnie wszystkie pliki .csv,
+pozbyć się artefaktów i sensownie je połączyć. Dla GitHuba te pliki są za duże, dlatego są na OneDrive - i tam proszę składujmy jakieś duże pliki jeśli zajdzie potrzeba. Możesz sobie zaimportować bazę danych i zobaczyć jak to wygląda - chociaż możliwe że
+musisz zwiększyć rozmiar pliku jaki możesz przesłać do phpmyadmin. Jeśli uważasz że baza wymaga zmian daj znać - ważne żebyśmy
+pracowali na tym samym.
+
+# API APOD - zdjęcia NASA na podstawie daty
+- po wskazaniu daty, jednocześnie w formularzu uzupełniane jest obraz/link z konkretnego dnia
+- https://github.com/nasa/apod-api
+
+
+
