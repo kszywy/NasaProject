@@ -9,11 +9,13 @@ namespace Nasa
     // KLASA DO PRZECHOWYWANIA DANYCH POGODOWYCH ZIEMI Z JEDNEGO WIERSZA TABELI
     public class EarthWeather
     {
+        public int IdEarth { get; set; }
         public string Country { get; set; }
         public string LocationName { get; set; }
         public double Latitude { get; set; }
         public double Longitude { get; set; }
         public string Timezone { get; set; }
+        public DateOnly date { get; set; }
         public long LastUpdatedEpoch { get; set; }
         public DateTime LastUpdated { get; set; }
         public double TemperatureCelsius { get; set; }
@@ -55,4 +57,20 @@ namespace Nasa
         public string MoonPhase { get; set; }
         public int MoonIllumination { get; set; }
     }
+
+    // Rekord reprezentujący jeden wiersz z tabeli earthweathercombined
+    public record EarthWeatherCombined(
+        int IdEarth,
+        string Country,
+        string LocationName,
+        string Timezone,
+        DateOnly date,
+        double TemperatureCelsius,
+        string ConditionText,
+        double WindKph ,
+        double PressureMb,
+        int Humidity,
+        int Cloud,
+        double FeelsLikeCelsius
+    );
 }
