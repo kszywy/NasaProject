@@ -12,9 +12,6 @@ namespace Nasa
     internal class DbConnection
     {
         private const string ConnectionString = "datasource=127.0.0.1;" + "port=3306;" + "username=root;" + "password=;" + "SsslMode=none;" + "database=weather";
-        
-        //POŁĄCZENIE Z BAZĄ Z KOSMOSU ABY WYCIĄGNĄC DANE
-        List<SpaceWeather> sw_list = new List<SpaceWeather>();
 
         public MySqlConnection ReturnDBConnection()
         {

@@ -11,7 +11,7 @@ namespace Nasa
     {
         public int IdSpace { get; set; }
         public string EventId { get; set; }
-        public string EventType { get; set; }
+        public string? EventType { get; set; }
         public string? BeginTime { get; set; }
         public string? PeakTime { get; set; }
         public string? EndTime { get; set; }
@@ -34,7 +34,7 @@ namespace Nasa
     public record SpaceWeatherCombined(
         int IdSpace,
         string EventId,
-        string EventType,
+        string? EventType,
         string? BeginTime,
         string? PeakTime,
         string? EndTime,

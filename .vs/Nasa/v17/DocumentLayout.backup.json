@@ -3,28 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\sskew\\Desktop\\NasaProject\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B3FCCA9A-4A97-4D90-99B7-7CC23AFACF60}|Nasa\\Nasa.csproj|c:\\users\\sskew\\desktop\\nasaproject\\nasa\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B3FCCA9A-4A97-4D90-99B7-7CC23AFACF60}|Nasa\\Nasa.csproj|solutionrelative:nasa\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B3FCCA9A-4A97-4D90-99B7-7CC23AFACF60}|Nasa\\Nasa.csproj|c:\\users\\sskew\\desktop\\nasaproject\\nasa\\dbcreator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3FCCA9A-4A97-4D90-99B7-7CC23AFACF60}|Nasa\\Nasa.csproj|solutionrelative:nasa\\dbcreator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B3FCCA9A-4A97-4D90-99B7-7CC23AFACF60}|Nasa\\Nasa.csproj|c:\\users\\sskew\\desktop\\nasaproject\\nasa\\combinedweather.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B3FCCA9A-4A97-4D90-99B7-7CC23AFACF60}|Nasa\\Nasa.csproj|solutionrelative:nasa\\combinedweather.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B3FCCA9A-4A97-4D90-99B7-7CC23AFACF60}|Nasa\\Nasa.csproj|c:\\users\\sskew\\desktop\\nasaproject\\nasa\\dbexporter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3FCCA9A-4A97-4D90-99B7-7CC23AFACF60}|Nasa\\Nasa.csproj|solutionrelative:nasa\\dbexporter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B3FCCA9A-4A97-4D90-99B7-7CC23AFACF60}|Nasa\\Nasa.csproj|c:\\users\\sskew\\desktop\\nasaproject\\nasa\\earthweather.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B3FCCA9A-4A97-4D90-99B7-7CC23AFACF60}|Nasa\\Nasa.csproj|solutionrelative:nasa\\earthweather.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B3FCCA9A-4A97-4D90-99B7-7CC23AFACF60}|Nasa\\Nasa.csproj|c:\\users\\sskew\\desktop\\nasaproject\\nasa\\dbcreator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B3FCCA9A-4A97-4D90-99B7-7CC23AFACF60}|Nasa\\Nasa.csproj|solutionrelative:nasa\\dbcreator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B3FCCA9A-4A97-4D90-99B7-7CC23AFACF60}|Nasa\\Nasa.csproj|c:\\users\\sskew\\desktop\\nasaproject\\nasa\\spaceweather.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3FCCA9A-4A97-4D90-99B7-7CC23AFACF60}|Nasa\\Nasa.csproj|solutionrelative:nasa\\spaceweather.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B3FCCA9A-4A97-4D90-99B7-7CC23AFACF60}|Nasa\\Nasa.csproj|c:\\users\\sskew\\desktop\\nasaproject\\nasa\\dbconnection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B3FCCA9A-4A97-4D90-99B7-7CC23AFACF60}|Nasa\\Nasa.csproj|solutionrelative:nasa\\dbconnection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B3FCCA9A-4A97-4D90-99B7-7CC23AFACF60}|Nasa\\Nasa.csproj|c:\\users\\sskew\\desktop\\nasaproject\\nasa\\apodconnection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B3FCCA9A-4A97-4D90-99B7-7CC23AFACF60}|Nasa\\Nasa.csproj|solutionrelative:nasa\\apodconnection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -33,22 +29,54 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "DockedWidth": 268,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\sskew\\Desktop\\NasaProject\\Nasa\\Program.cs",
-              "RelativeDocumentMoniker": "Nasa\\Program.cs",
-              "ToolTip": "C:\\Users\\sskew\\Desktop\\NasaProject\\Nasa\\Program.cs",
-              "RelativeToolTip": "Nasa\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAA2AAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "DbExporter.cs",
+              "DocumentMoniker": "C:\\Users\\sskew\\Desktop\\NasaProject\\Nasa\\DbExporter.cs",
+              "RelativeDocumentMoniker": "Nasa\\DbExporter.cs",
+              "ToolTip": "C:\\Users\\sskew\\Desktop\\NasaProject\\Nasa\\DbExporter.cs",
+              "RelativeToolTip": "Nasa\\DbExporter.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAADwvwQAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-13T18:28:49.997Z",
+              "WhenOpened": "2026-01-17T12:16:57.137Z",
               "EditorCaption": ""
             },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DbCreator.cs",
+              "DocumentMoniker": "C:\\Users\\sskew\\Desktop\\NasaProject\\Nasa\\DbCreator.cs",
+              "RelativeDocumentMoniker": "Nasa\\DbCreator.cs",
+              "ToolTip": "C:\\Users\\sskew\\Desktop\\NasaProject\\Nasa\\DbCreator.cs",
+              "RelativeToolTip": "Nasa\\DbCreator.cs",
+              "ViewState": "AgIAAEoAAAAAAAAAAAAuwE8AAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-17T12:15:02.2Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DbConnection.cs",
+              "DocumentMoniker": "C:\\Users\\sskew\\Desktop\\NasaProject\\Nasa\\DbConnection.cs",
+              "RelativeDocumentMoniker": "Nasa\\DbConnection.cs",
+              "ToolTip": "C:\\Users\\sskew\\Desktop\\NasaProject\\Nasa\\DbConnection.cs",
+              "RelativeToolTip": "Nasa\\DbConnection.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-17T12:14:50.69Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 132,
+          "SelectedChildIndex": 0,
+          "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 2,
@@ -57,57 +85,23 @@
               "RelativeDocumentMoniker": "Nasa\\EarthWeather.cs",
               "ToolTip": "C:\\Users\\sskew\\Desktop\\NasaProject\\Nasa\\EarthWeather.cs",
               "RelativeToolTip": "Nasa\\EarthWeather.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAA5wAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAB0AAAAAAAAAAAA5wBEAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-13T18:28:36.707Z"
+              "WhenOpened": "2026-01-17T13:09:10.091Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "DbCreator.cs",
-              "DocumentMoniker": "C:\\Users\\sskew\\Desktop\\NasaProject\\Nasa\\DbCreator.cs",
-              "RelativeDocumentMoniker": "Nasa\\DbCreator.cs",
-              "ToolTip": "C:\\Users\\sskew\\Desktop\\NasaProject\\Nasa\\DbCreator.cs",
-              "RelativeToolTip": "Nasa\\DbCreator.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "SpaceWeather.cs",
+              "DocumentMoniker": "C:\\Users\\sskew\\Desktop\\NasaProject\\Nasa\\SpaceWeather.cs",
+              "RelativeDocumentMoniker": "Nasa\\SpaceWeather.cs",
+              "ToolTip": "C:\\Users\\sskew\\Desktop\\NasaProject\\Nasa\\SpaceWeather.cs",
+              "RelativeToolTip": "Nasa\\SpaceWeather.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAA5wAwAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-13T18:28:35.232Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "DBConnection.cs",
-              "DocumentMoniker": "C:\\Users\\sskew\\Desktop\\NasaProject\\Nasa\\DBConnection.cs",
-              "RelativeDocumentMoniker": "Nasa\\DBConnection.cs",
-              "ToolTip": "C:\\Users\\sskew\\Desktop\\NasaProject\\Nasa\\DBConnection.cs",
-              "RelativeToolTip": "Nasa\\DBConnection.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-13T18:27:33.709Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CombinedWeather.cs",
-              "DocumentMoniker": "C:\\Users\\sskew\\Desktop\\NasaProject\\Nasa\\CombinedWeather.cs",
-              "RelativeDocumentMoniker": "Nasa\\CombinedWeather.cs",
-              "ToolTip": "C:\\Users\\sskew\\Desktop\\NasaProject\\Nasa\\CombinedWeather.cs",
-              "RelativeToolTip": "Nasa\\CombinedWeather.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAoAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-13T18:27:30.192Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "APODConnection.cs",
-              "DocumentMoniker": "C:\\Users\\sskew\\Desktop\\NasaProject\\Nasa\\APODConnection.cs",
-              "RelativeDocumentMoniker": "Nasa\\APODConnection.cs",
-              "ToolTip": "C:\\Users\\sskew\\Desktop\\NasaProject\\Nasa\\APODConnection.cs",
-              "RelativeToolTip": "Nasa\\APODConnection.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-13T18:27:17.214Z"
+              "WhenOpened": "2026-01-17T12:51:43.922Z",
+              "EditorCaption": ""
             }
           ]
         }

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Nasa
 {
+    // Klasa odpowiedialna jest za tworzenie struktury bazy danych
     internal class DbCreator
     {
         private readonly DbConnection _connection;
@@ -74,7 +75,7 @@ namespace Nasa
             using (MySqlConnection _conn = _connection.ReturnDBConnection())
             {
                 // Utworzenie dat
-                MySqlCommand cmd = new MySqlCommand("CREATE TABLE `dates` (`date_id` date NOT NULL) DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;", _conn);
+                MySqlCommand cmd = new MySqlCommand("CREATE TABLE IF NOT EXISTS `dates` (`date_id` date NOT NULL) DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;", _conn);
                 cmd.ExecuteNonQuery();
 
                 // Zapchanie tabeli datami
@@ -131,6 +132,39 @@ namespace Nasa
             {
                 Console.WriteLine("Nastąpił błąd przy tworzeniu bazy danych:\n" + ex.Message);
 
+            }
+        }
+
+        // Czyszczenie bazy danych - na sprawdzenie czy eksport i import działają
+        // Nie tworzyłem kolejnej klasy, uznałem, że tu będzie na to najlepsze miejsce
+        public void PurgeDatabase()
+        {
+            using (MySqlConnection _conn = _connection.ReturnDBConnection())
+            {
+                string[] queries =
+                {
+                    "SET FOREIGN_KEY_CHECKS = 0;",
+                    "DELETE FROM earthweather;",
+                    "DELETE FROM spaceweather",
+                    "DELETE FROM earthweathercombined",
+                    "DELETE FROM spaceweathercombined",
+                    "SET FOREIGN_KEY_CHECKS = 1;"
+                };
+
+                foreach (var query in queries)
+                {
+                    MySqlCommand cmd = new MySqlCommand(query, _conn);
+                    cmd.ExecuteNonQuery();
+                }
+
+            }
+        }
+
+        public void DropDatabase()
+        {
+            using (MySqlConnection _conn = _connection.ReturnDBConnection())
+            {
+                MySqlCommand cmd = new MySqlCommand("DROP DATABASE WEATHER;", _conn); cmd.ExecuteNonQuery();
             }
         }
     }
