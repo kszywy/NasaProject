@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Nasa
 {
@@ -15,7 +17,21 @@ namespace Nasa
         public double? Latitude { get; set; }
         public double? Longitude { get; set; }
         public string? Timezone { get; set; }
+
+        [XmlIgnore]
         public DateOnly Date { get; set; }
+
+        [JsonIgnore]
+        [XmlElement("Date")]
+        public string DateString
+        {
+            get { return Date.ToString("yyyy-MM-dd"); }
+            set
+            {
+                if (DateOnly.TryParse(value, out var result))
+                    Date = result;
+            }
+        }
         public long? LastUpdatedEpoch { get; set; }
         public DateTime LastUpdated { get; set; }
         public double? TemperatureCelsius { get; set; }
@@ -50,10 +66,10 @@ namespace Nasa
         public int? AirQualityGbDefraIndex { get; set; }
 
         // Astronomy
-        public TimeOnly? Sunrise { get; set; }
-        public TimeOnly? Sunset { get; set; }
-        public TimeOnly? Moonrise { get; set; }
-        public TimeOnly? Moonset { get; set; }
+        public TimeSpan? Sunrise { get; set; }
+        public TimeSpan? Sunset { get; set; }
+        public TimeSpan? Moonrise { get; set; }
+        public TimeSpan? Moonset { get; set; }
         public string? MoonPhase { get; set; }
         public int? MoonIllumination { get; set; }
     }

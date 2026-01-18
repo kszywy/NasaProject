@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Nasa
 {
@@ -23,7 +25,22 @@ namespace Nasa
         public string? KpIndex { get; set; }
         public string? ObservedTime { get; set; }
         public string? Source { get; set; }
+
+        [XmlIgnore]
         public DateOnly Date { get; set; }
+
+        [JsonIgnore]
+        [XmlElement("Date")]
+        public string DateString
+        {
+            get { return Date.ToString("yyyy-MM-dd"); }
+            set
+            {
+                if (DateOnly.TryParse(value, out var result))
+                    Date = result;
+            }
+        }
+
         public int? Year { get; set; }
         public int? Month { get; set; }
         public int? Day { get; set; }

@@ -109,10 +109,10 @@ namespace Nasa
                             AirQualityPM10 = reader.IsDBNull(34) ? null : reader.GetDouble(34),                     // AirQualityPM10
                             AirQualityUsEpaIndex = reader.IsDBNull(35) ? null : reader.GetInt32(35),                // AirQualityUsEpaIndex
                             AirQualityGbDefraIndex = reader.IsDBNull(36) ? null : reader.GetInt32(36),              // AirQualityGbDefraIndex
-                            Sunrise = reader.IsDBNull(37) ? null : TimeOnly.FromDateTime(reader.GetDateTime(37)),   // Sunrise
-                            Sunset = reader.IsDBNull(38) ? null : TimeOnly.FromDateTime(reader.GetDateTime(38)),    // Sunset
-                            Moonrise = reader.IsDBNull(39) ? null : TimeOnly.FromDateTime(reader.GetDateTime(39)),  // Moonrise
-                            Moonset = reader.IsDBNull(40) ? null : TimeOnly.FromDateTime(reader.GetDateTime(40)),   // Moonset
+                            Sunrise = reader.IsDBNull(37) ? null : reader.GetFieldValue<TimeSpan>(37),              // Sunrise
+                            Sunset = reader.IsDBNull(38) ? null : reader.GetFieldValue<TimeSpan>(38),               // Sunset
+                            Moonrise = reader.IsDBNull(39) ? null : reader.GetFieldValue<TimeSpan>(39),             // Moonrise
+                            Moonset = reader.IsDBNull(40) ? null : reader.GetFieldValue<TimeSpan>(40),              // Moonset
                             MoonPhase = reader.IsDBNull(41) ? null : reader.GetString(41),                          // MoonPhase
                             MoonIllumination = reader.IsDBNull(42) ? null : reader.GetInt32(42)                     // MoonIllumination
                         });
@@ -130,28 +130,37 @@ namespace Nasa
         }
         
 
-        public void ExportData(string format, string fileName, string filePath)
+        public void ExportData(string format, string filePath)
         {
             GetAllData();
-            string fullPath = Path.Combine(filePath, fileName);
 
             using (MySqlConnection _conn = _connection.ReturnDBConnection())
             {
                 switch (format.ToUpper())
                 {
                     case "JSON":
-                        var jsonData = new { Space = _spaceList, Earth = _earthList };
+                        var jsonData = new { SpaceList = _spaceList, EarthList = _earthList };
                         string jsonString = System.Text.Json.JsonSerializer.Serialize(jsonData, new System.Text.Json.JsonSerializerOptions { WriteIndented = true });
-                        File.WriteAllText(fullPath + ".json", jsonString);
+                        File.WriteAllText(filePath, jsonString);
 
                         break;
 
                     case "XML":
-                        using (var writer = new StreamWriter(fullPath + ".xml"))
+
+                        var dataToExport = new WeatherExportWrapper
                         {
-                            var serializer = new System.Xml.Serialization.XmlSerializer(typeof(List<SpaceWeather>));
-                            serializer.Serialize(writer, _spaceList);
+                            SpaceList = _spaceList,
+                            EarthList = _earthList
+                        };
+
+                        var serializer = new System.Xml.Serialization.XmlSerializer(typeof(WeatherExportWrapper));
+
+                        using (var writer = new StreamWriter(filePath))
+                        {
+                            serializer.Serialize(writer, dataToExport);
                         }
+
+
                         break;
 
                     // Nie ma potrzeby eksportu do SQL, jednak jeśli znajdzie się chwila można zrobić

@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,16 +16,6 @@ namespace Nasa
         public DbCreator(DbConnection connection)
         {
             this._connection = connection;
-        }
-
-        // Baza powinna być już stworzona przez użytkownika, ale na wszelki wypadek istnieje ta metoda
-        public void CreateDatabase()
-        {
-            using (MySqlConnection _conn = _connection.ReturnDBConnection())
-            {
-                MySqlCommand cmd = new MySqlCommand("CREATE DATABASE IF NOT EXISTS weather; USE weather;", _conn);
-                cmd.ExecuteNonQuery();
-            }
         }
 
         public void CreateSpaceWeather()
@@ -72,14 +63,22 @@ namespace Nasa
 
         public void CreateDates()
         {
+            string checkQuery = "SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = DATABASE() AND table_name = 'dates'";
+
             using (MySqlConnection _conn = _connection.ReturnDBConnection())
             {
-                // Utworzenie dat
-                MySqlCommand cmd = new MySqlCommand("CREATE TABLE IF NOT EXISTS `dates` (`date_id` date NOT NULL) DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;", _conn);
-                cmd.ExecuteNonQuery();
 
-                // Zapchanie tabeli datami
-                cmd = new MySqlCommand(@"
+                var cmdCheck = new MySqlCommand(checkQuery, _conn);
+                int tableExists = Convert.ToInt32(cmdCheck.ExecuteScalar());
+
+                if (tableExists == 0)
+                {
+                    // Utworzenie dat
+                    MySqlCommand cmd = new MySqlCommand("CREATE TABLE `dates` (`date_id` date NOT NULL) DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;", _conn);
+                    cmd.ExecuteNonQuery();
+
+                    // Zapchanie tabeli datami
+                    cmd = new MySqlCommand(@"
                     INSERT INTO dates (date_id)
                     WITH RECURSIVE calendar AS
                         (SELECT '2023-07-11' AS dt
@@ -88,8 +87,9 @@ namespace Nasa
                             FROM calendar
                             WHERE dt < '2025-12-21')
                     SELECT dt FROM calendar;",
-                    _conn);
-                cmd.ExecuteNonQuery();
+                        _conn);
+                    cmd.ExecuteNonQuery();
+                }
             }
         }
 
@@ -99,6 +99,11 @@ namespace Nasa
             {
                 string[] queries =
                 {
+                    "ALTER TABLE `dates`\r\n  ADD PRIMARY KEY (`date_id`);",
+                    "ALTER TABLE `earthweather`\r\n  ADD PRIMARY KEY (`id_earth`),\r\n  ADD KEY `date` (`date`);",
+                    "ALTER TABLE `earthweathercombined`\r\n  ADD PRIMARY KEY (`id_earth`),\r\n  ADD KEY `date` (`date`);",
+                    "ALTER TABLE `spaceweather`\r\n  ADD PRIMARY KEY (`id_space`),\r\n  ADD KEY `date` (`date`);",
+                    "ALTER TABLE `spaceweathercombined`\r\n  ADD PRIMARY KEY (`id_space`),\r\n  ADD KEY `date` (`date`);",
                     "ALTER TABLE `earthweather`\r\n  MODIFY `id_earth` int(11) NOT NULL AUTO_INCREMENT;",
                     "ALTER TABLE `earthweathercombined`\r\n  MODIFY `id_earth` int(11) NOT NULL AUTO_INCREMENT;",
                     "ALTER TABLE `spaceweather`\r\n  MODIFY `id_space` int(11) NOT NULL AUTO_INCREMENT;",
@@ -120,7 +125,7 @@ namespace Nasa
         {
             try
             {
-                //CreateDatabase();
+                CreateDatabase();
                 CreateDates();
                 CreateSpaceWeather();
                 CreateEarthWeather();
@@ -166,6 +171,22 @@ namespace Nasa
             {
                 MySqlCommand cmd = new MySqlCommand("DROP DATABASE WEATHER;", _conn); cmd.ExecuteNonQuery();
             }
+        }
+
+        public void CreateDatabase()
+        {
+            const string CreateString = "datasource=127.0.0.1;" + "port=3306;" + "username=root;" + "password=;";
+
+            var conn = new MySqlConnection(CreateString);
+
+            if (conn.State != System.Data.ConnectionState.Open)
+            {
+                conn.Open();
+            }
+
+            MySqlCommand cmd = new MySqlCommand("CREATE DATABASE IF NOT EXISTS weather;", conn);
+            cmd.ExecuteNonQuery();
+            conn.Close();
         }
     }
 }
