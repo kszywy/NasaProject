@@ -32,7 +32,8 @@ namespace Nasa
                 {
                     while (reader.Read())
                     {
-                        this._spaceList.Add(new SpaceWeather() {
+                        this._spaceList.Add(new SpaceWeather()
+                        {
                             IdSpace = reader.GetInt32(0),                                       // IdSpace
                             EventId = reader.GetString(1),                                      // EventId
                             EventType = reader.IsDBNull(2) ? null : reader.GetString(2),        // EventType
@@ -71,7 +72,8 @@ namespace Nasa
                 {
                     while (reader.Read())
                     {
-                        this._earthList.Add(new EarthWeather() { 
+                        this._earthList.Add(new EarthWeather()
+                        {
                             IdEarth = reader.GetInt32(0),                                                           // IdEarth
                             Country = reader.IsDBNull(1) ? null : reader.GetString(1),                              // Country
                             LocationName = reader.IsDBNull(2) ? null : reader.GetString(2),                         // LocationName
@@ -128,53 +130,69 @@ namespace Nasa
             GetEarthWeatherData();
             GetSpaceWeatherData();
         }
-        
 
         public void ExportData(string format, string filePath)
         {
+            if (format.ToUpper() == "SQL")
+            {
+                ExportToSqlDump(filePath);
+                return;
+            }
+
             GetAllData();
 
-            using (MySqlConnection _conn = _connection.ReturnDBConnection())
+            switch (format.ToUpper())
             {
-                switch (format.ToUpper())
-                {
-                    case "JSON":
-                        var jsonData = new { SpaceList = _spaceList, EarthList = _earthList };
-                        string jsonString = System.Text.Json.JsonSerializer.Serialize(jsonData, new System.Text.Json.JsonSerializerOptions { WriteIndented = true });
-                        File.WriteAllText(filePath, jsonString);
+                case "JSON":
+                    var jsonData = new { SpaceList = _spaceList, EarthList = _earthList };
+                    string jsonString = System.Text.Json.JsonSerializer.Serialize(jsonData, new System.Text.Json.JsonSerializerOptions { WriteIndented = true });
+                    File.WriteAllText(filePath, jsonString);
 
-                        break;
+                    break;
 
-                    case "XML":
+                case "XML":
 
-                        var dataToExport = new WeatherExportWrapper
-                        {
-                            SpaceList = _spaceList,
-                            EarthList = _earthList
-                        };
+                    var dataToExport = new WeatherExportWrapper
+                    {
+                        SpaceList = _spaceList,
+                        EarthList = _earthList
+                    };
 
-                        var serializer = new System.Xml.Serialization.XmlSerializer(typeof(WeatherExportWrapper));
+                    var serializer = new System.Xml.Serialization.XmlSerializer(typeof(WeatherExportWrapper));
 
-                        using (var writer = new StreamWriter(filePath))
-                        {
-                            serializer.Serialize(writer, dataToExport);
-                        }
+                    using (var writer = new StreamWriter(filePath))
+                    {
+                        serializer.Serialize(writer, dataToExport);
+                    }
 
+                    break;
 
-                        break;
+                default:
 
-                    // Nie ma potrzeby eksportu do SQL, jednak jeśli znajdzie się chwila można zrobić
-                    //case "SQL":
-                    //    break;
-
-                    default:
-
-                        break;
-                }
+                    break;
             }
             // Czyszczenie tablic po eksporcie
             this._spaceList = [];
             this._earthList = [];
+        }
+            
+        private void ExportToSqlDump(string filePath)
+        {
+            using (MySqlConnection conn = _connection.ReturnDBConnection())
+            {
+                using (MySqlCommand cmd = new MySqlCommand())
+                {
+                    using (MySqlBackup mb = new MySqlBackup(cmd))
+                    {
+                        cmd.Connection = conn;
+                        mb.ExportInfo.TablesToBeExportedList = new List<string> {
+                            "spaceweather",
+                            "earthweather"
+                        };
+                        mb.ExportToFile(filePath);
+                    }
+                }
+            }
         }
     }
 }

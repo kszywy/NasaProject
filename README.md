@@ -18,10 +18,12 @@ Aplikacja wykorzystuje bazę danych zawierającą informacje o zjawiskach pogodo
 
 - **Nasa/**: Główny katalog, wszystykie pliki i foldery wskazane poniżej znajdują się w nim
 - **resources/**: Katalog zawierający pliki źródłowe, umożliwiające zapełnienie bazy danych
-- **APODConnections.cs**: Plik odpowiedzialny za wykonywanie zapytań do API APOD
+- **APODConnection.cs**: Plik odpowiedzialny za wykonywanie zapytań do API APOD
 - **DbConnection.cs**: Klasa odpowiedzialna za łączenie się z bazą danych
 - **DbCreator.cs**: Klasa odpowiedzialna za tworzenie bazy danych i jej import
 - **Earthweather.cs, SpaceWeather.cs**: Klasy przechowujące dane pochodzące z jednego wiersza odpowiedniej tabeli
+- **DbFilter.cs**: Klasa odpowiedzialna za filtrowanie danych z dwóch głównych tabel
+- **DbExporter.cs / DbImporter.cs**: Klasy odpowiedzialne za eksport i import danych
 
 ## Wymagania
 
@@ -47,6 +49,7 @@ Aplikacja wykorzystuje bazę danych zawierającą informacje o zjawiskach pogodo
 3. Otwórz plik *NasaProject.sln* za pośrednictwem opcji `Open Project or Solution` w programie Visual Studio
 4. Zbuduj i skompiluj aplikację
 5. Jeśli uruchamiasz aplikację po raz pierwszy, nie posiadasz odpowiedniej bazy danych do pracy z aplikacją. Aby to zmienić, użyj przycisku `Utwórz bazę danych` i utwórz bazę danych o nazwie `weather`.
+6 Przy importowaniu dużej ilości danych do tabeli earthweather, wymagane jest zwiększenie maksymalnego rozmiaru pakietu wysyłanego do MySQL w pliku my.ini.
 
 ## Autorzy
 

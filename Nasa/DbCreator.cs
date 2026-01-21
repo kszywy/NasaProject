@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -22,7 +23,7 @@ namespace Nasa
         {
             using (MySqlConnection _conn = _connection.ReturnDBConnection())
             {
-                string query = "CREATE TABLE `spaceweather` (\r\n  `id_space` int(11) NOT NULL,\r\n  `event_id` varchar(27) DEFAULT NULL,\r\n  `event_type` varchar(17) DEFAULT NULL,\r\n  `begin_time` varchar(25) DEFAULT NULL,\r\n  `peak_time` varchar(25) DEFAULT NULL,\r\n  `end_time` varchar(25) DEFAULT NULL,\r\n  `class_type` varchar(4) DEFAULT NULL,\r\n  `source_location` varchar(7) DEFAULT NULL,\r\n  `active_region` varchar(5) DEFAULT NULL,\r\n  `instruments` varchar(38) DEFAULT NULL,\r\n  `note` varchar(930) DEFAULT NULL,\r\n  `kp_index` varchar(3) DEFAULT NULL,\r\n  `observed_time` varchar(25) DEFAULT NULL,\r\n  `source` varchar(4) DEFAULT NULL,\r\n  `date` date DEFAULT NULL,\r\n  `year` int(4) DEFAULT NULL,\r\n  `month` int(2) DEFAULT NULL,\r\n  `day` int(2) DEFAULT NULL,\r\n  `hour` int(2) DEFAULT NULL\r\n) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;";
+                string query = "CREATE TABLE IF NOT EXISTS `spaceweather` (\r\n  `id_space` int(11) NOT NULL,\r\n  `event_id` varchar(27) DEFAULT NULL,\r\n  `event_type` varchar(17) DEFAULT NULL,\r\n  `begin_time` varchar(25) DEFAULT NULL,\r\n  `peak_time` varchar(25) DEFAULT NULL,\r\n  `end_time` varchar(25) DEFAULT NULL,\r\n  `class_type` varchar(4) DEFAULT NULL,\r\n  `source_location` varchar(7) DEFAULT NULL,\r\n  `active_region` varchar(5) DEFAULT NULL,\r\n  `instruments` varchar(38) DEFAULT NULL,\r\n  `note` varchar(930) DEFAULT NULL,\r\n  `kp_index` varchar(3) DEFAULT NULL,\r\n  `observed_time` varchar(25) DEFAULT NULL,\r\n  `source` varchar(4) DEFAULT NULL,\r\n  `date` date DEFAULT NULL,\r\n  `year` int(4) DEFAULT NULL,\r\n  `month` int(2) DEFAULT NULL,\r\n  `day` int(2) DEFAULT NULL,\r\n  `hour` int(2) DEFAULT NULL\r\n) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;";
                 MySqlCommand cmd = new MySqlCommand(query, _conn);
                 cmd.ExecuteNonQuery();
             }
@@ -32,7 +33,7 @@ namespace Nasa
         {
             using (MySqlConnection _conn = _connection.ReturnDBConnection())
             {
-                string query = "CREATE TABLE `earthweather` (\r\n  `id_earth` int(11) NOT NULL,\r\n  `country` varchar(32) DEFAULT NULL,\r\n  `location_name` varchar(21) DEFAULT NULL,\r\n  `latitude` decimal(7,4) DEFAULT NULL,\r\n  `longitude` decimal(8,4) DEFAULT NULL,\r\n  `timezone` varchar(30) DEFAULT NULL,\r\n  `date` date DEFAULT NULL,\r\n  `last_updated_epoch` int(10) DEFAULT NULL,\r\n  `last_updated` varchar(16) DEFAULT NULL,\r\n  `temperature_celsius` decimal(4,1) DEFAULT NULL,\r\n  `temperature_fahrenheit` decimal(4,1) DEFAULT NULL,\r\n  `condition_text` varchar(43) DEFAULT NULL,\r\n  `wind_mph` decimal(5,1) DEFAULT NULL,\r\n  `wind_kph` decimal(5,1) DEFAULT NULL,\r\n  `wind_degree` int(3) DEFAULT NULL,\r\n  `wind_direction` varchar(3) DEFAULT NULL,\r\n  `pressure_mb` decimal(5,1) DEFAULT NULL,\r\n  `pressure_in` decimal(4,2) DEFAULT NULL,\r\n  `precip_mm` decimal(4,2) DEFAULT NULL,\r\n  `precip_in` decimal(3,2) DEFAULT NULL,\r\n  `humidity` int(3) DEFAULT NULL,\r\n  `cloud` int(3) DEFAULT NULL,\r\n  `feels_like_celsius` decimal(4,1) DEFAULT NULL,\r\n  `feels_like_fahrenheit` decimal(4,1) DEFAULT NULL,\r\n  `visibility_km` decimal(3,1) DEFAULT NULL,\r\n  `visibility_miles` decimal(3,1) DEFAULT NULL,\r\n  `uv_index` decimal(3,1) DEFAULT NULL,\r\n  `gust_mph` decimal(5,1) DEFAULT NULL,\r\n  `gust_kph` decimal(5,1) DEFAULT NULL,\r\n  `air_quality_Carbon_Monoxide` decimal(8,3) DEFAULT NULL,\r\n  `air_quality_Ozone` decimal(4,1) DEFAULT NULL,\r\n  `air_quality_Nitrogen_dioxide` decimal(6,3) DEFAULT NULL,\r\n  `air_quality_Sulphur_dioxide` decimal(6,3) DEFAULT NULL,\r\n  `air_quality_PM2.5` decimal(6,3) DEFAULT NULL,\r\n  `air_quality_PM10` decimal(7,3) DEFAULT NULL,\r\n  `air_quality_us-epa-index` int(1) DEFAULT NULL,\r\n  `air_quality_gb-defra-index` int(2) DEFAULT NULL,\r\n  `sunrise` varchar(8) DEFAULT NULL,\r\n  `sunset` varchar(8) DEFAULT NULL,\r\n  `moonrise` varchar(11) DEFAULT NULL,\r\n  `moonset` varchar(10) DEFAULT NULL,\r\n  `moon_phase` varchar(15) DEFAULT NULL,\r\n  `moon_illumination` int(3) DEFAULT NULL\r\n) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;";
+                string query = "CREATE TABLE IF NOT EXISTS `earthweather` (\r\n  `id_earth` int(11) NOT NULL,\r\n  `country` varchar(32) DEFAULT NULL,\r\n  `location_name` varchar(21) DEFAULT NULL,\r\n  `latitude` decimal(7,4) DEFAULT NULL,\r\n  `longitude` decimal(8,4) DEFAULT NULL,\r\n  `timezone` varchar(30) DEFAULT NULL,\r\n  `date` date DEFAULT NULL,\r\n  `last_updated_epoch` int(10) DEFAULT NULL,\r\n  `last_updated` varchar(16) DEFAULT NULL,\r\n  `temperature_celsius` decimal(4,1) DEFAULT NULL,\r\n  `temperature_fahrenheit` decimal(4,1) DEFAULT NULL,\r\n  `condition_text` varchar(43) DEFAULT NULL,\r\n  `wind_mph` decimal(5,1) DEFAULT NULL,\r\n  `wind_kph` decimal(5,1) DEFAULT NULL,\r\n  `wind_degree` int(3) DEFAULT NULL,\r\n  `wind_direction` varchar(3) DEFAULT NULL,\r\n  `pressure_mb` decimal(5,1) DEFAULT NULL,\r\n  `pressure_in` decimal(4,2) DEFAULT NULL,\r\n  `precip_mm` decimal(4,2) DEFAULT NULL,\r\n  `precip_in` decimal(3,2) DEFAULT NULL,\r\n  `humidity` int(3) DEFAULT NULL,\r\n  `cloud` int(3) DEFAULT NULL,\r\n  `feels_like_celsius` decimal(4,1) DEFAULT NULL,\r\n  `feels_like_fahrenheit` decimal(4,1) DEFAULT NULL,\r\n  `visibility_km` decimal(3,1) DEFAULT NULL,\r\n  `visibility_miles` decimal(3,1) DEFAULT NULL,\r\n  `uv_index` decimal(3,1) DEFAULT NULL,\r\n  `gust_mph` decimal(5,1) DEFAULT NULL,\r\n  `gust_kph` decimal(5,1) DEFAULT NULL,\r\n  `air_quality_Carbon_Monoxide` decimal(8,3) DEFAULT NULL,\r\n  `air_quality_Ozone` decimal(4,1) DEFAULT NULL,\r\n  `air_quality_Nitrogen_dioxide` decimal(6,3) DEFAULT NULL,\r\n  `air_quality_Sulphur_dioxide` decimal(6,3) DEFAULT NULL,\r\n  `air_quality_PM2.5` decimal(6,3) DEFAULT NULL,\r\n  `air_quality_PM10` decimal(7,3) DEFAULT NULL,\r\n  `air_quality_us-epa-index` int(1) DEFAULT NULL,\r\n  `air_quality_gb-defra-index` int(2) DEFAULT NULL,\r\n  `sunrise` varchar(8) DEFAULT NULL,\r\n  `sunset` varchar(8) DEFAULT NULL,\r\n  `moonrise` varchar(11) DEFAULT NULL,\r\n  `moonset` varchar(10) DEFAULT NULL,\r\n  `moon_phase` varchar(15) DEFAULT NULL,\r\n  `moon_illumination` int(3) DEFAULT NULL\r\n) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;";
                 MySqlCommand cmd = new MySqlCommand(query, _conn);
                 cmd.ExecuteNonQuery();
             }
@@ -43,7 +44,7 @@ namespace Nasa
         {
             using (MySqlConnection _conn = _connection.ReturnDBConnection())
             {
-                string query = "CREATE TABLE `spaceweathercombined` (\r\n  `id_space` int(11) NOT NULL,\r\n  `event_id` varchar(27) DEFAULT NULL,\r\n  `event_type` varchar(17) DEFAULT NULL,\r\n  `begin_time` varchar(25) DEFAULT NULL,\r\n  `peak_time` varchar(25) DEFAULT NULL,\r\n  `end_time` varchar(25) DEFAULT NULL,\r\n  `class_type` varchar(4) DEFAULT NULL,\r\n  `source_location` varchar(7) DEFAULT NULL,\r\n  `active_region` varchar(5) DEFAULT NULL,\r\n  `instruments` varchar(38) DEFAULT NULL,\r\n  `note` varchar(930) DEFAULT NULL,\r\n  `date` date DEFAULT NULL\r\n) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;";
+                string query = "CREATE TABLE IF NOT EXISTS `spaceweathercombined` (\r\n  `id_space` int(11) NOT NULL,\r\n  `event_id` varchar(27) DEFAULT NULL,\r\n  `event_type` varchar(17) DEFAULT NULL,\r\n  `begin_time` varchar(25) DEFAULT NULL,\r\n  `peak_time` varchar(25) DEFAULT NULL,\r\n  `end_time` varchar(25) DEFAULT NULL,\r\n  `class_type` varchar(4) DEFAULT NULL,\r\n  `source_location` varchar(7) DEFAULT NULL,\r\n  `active_region` varchar(5) DEFAULT NULL,\r\n  `instruments` varchar(38) DEFAULT NULL,\r\n  `note` varchar(930) DEFAULT NULL,\r\n  `date` date DEFAULT NULL\r\n) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;";
                 MySqlCommand cmd = new MySqlCommand(query, _conn);
                 cmd.ExecuteNonQuery();
             }
@@ -54,7 +55,7 @@ namespace Nasa
         {
             using (MySqlConnection _conn = _connection.ReturnDBConnection())
             {
-                string query = "CREATE TABLE `earthweathercombined` (\r\n  `id_earth` int(11) NOT NULL,\r\n  `country` varchar(32) DEFAULT NULL,\r\n  `location_name` varchar(21) DEFAULT NULL,\r\n  `timezone` varchar(30) DEFAULT NULL,\r\n  `date` date DEFAULT NULL,\r\n  `temperature_celsius` decimal(4,1) DEFAULT NULL,\r\n  `condition_text` varchar(43) DEFAULT NULL,\r\n  `wind_kph` decimal(5,1) DEFAULT NULL,\r\n  `pressure_mb` decimal(5,1) DEFAULT NULL,\r\n  `humidity` int(3) DEFAULT NULL,\r\n  `cloud` int(3) DEFAULT NULL,\r\n  `feels_like_celsius` decimal(4,1) DEFAULT NULL,\r\n  `air_quality_us-epa-index` int(1) DEFAULT NULL,\r\n  `air_quality_gb-defra-index` int(2) DEFAULT NULL\r\n) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;";
+                string query = "CREATE TABLE IF NOT EXISTS `earthweathercombined` (  `id_earth` int(11) NOT NULL,  `country` varchar(32) DEFAULT NULL, `location_name` varchar(21) DEFAULT NULL,  `timezone` varchar(30) DEFAULT NULL,  `date` date DEFAULT NULL,  `temperature_celsius` decimal(4,1) DEFAULT NULL,  `condition_text` varchar(43) DEFAULT NULL,  `wind_kph` decimal(5,1) DEFAULT NULL,  `pressure_mb` decimal(5,1) DEFAULT NULL,  `humidity` int(3) DEFAULT NULL,  `cloud` int(3) DEFAULT NULL, `feels_like_celsius` decimal(4,1) DEFAULT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;";
                 MySqlCommand cmd = new MySqlCommand(query, _conn);
                 cmd.ExecuteNonQuery();
             }
@@ -63,21 +64,17 @@ namespace Nasa
 
         public void CreateDates()
         {
-            string checkQuery = "SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = DATABASE() AND table_name = 'dates'";
-
             using (MySqlConnection _conn = _connection.ReturnDBConnection())
             {
+                MySqlCommand cmd = new MySqlCommand("CREATE TABLE IF NOT EXISTS`dates` (`date_id` date NOT NULL) DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;", _conn);
+                cmd.ExecuteNonQuery();
 
-                var cmdCheck = new MySqlCommand(checkQuery, _conn);
-                int tableExists = Convert.ToInt32(cmdCheck.ExecuteScalar());
+                cmd = new MySqlCommand("SELECT COUNT(*) FROM `dates`;", _conn);
+                int count = Convert.ToInt32(cmd.ExecuteScalar());
 
-                if (tableExists == 0)
+                if (count == 0)
                 {
-                    // Utworzenie dat
-                    MySqlCommand cmd = new MySqlCommand("CREATE TABLE `dates` (`date_id` date NOT NULL) DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;", _conn);
-                    cmd.ExecuteNonQuery();
 
-                    // Zapchanie tabeli datami
                     cmd = new MySqlCommand(@"
                     INSERT INTO dates (date_id)
                     WITH RECURSIVE calendar AS
@@ -87,7 +84,7 @@ namespace Nasa
                             FROM calendar
                             WHERE dt < '2025-12-21')
                     SELECT dt FROM calendar;",
-                        _conn);
+                            _conn);
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -153,6 +150,7 @@ namespace Nasa
                     "DELETE FROM spaceweather",
                     "DELETE FROM earthweathercombined",
                     "DELETE FROM spaceweathercombined",
+                    "DELETE FROM dates",
                     "SET FOREIGN_KEY_CHECKS = 1;"
                 };
 
@@ -167,7 +165,7 @@ namespace Nasa
 
         public void DropDatabase()
         {
-            using (MySqlConnection _conn = _connection.ReturnDBConnection())
+            using (MySqlConnection _conn = _connection.ReturnDBConnectionNoWeather())
             {
                 MySqlCommand cmd = new MySqlCommand("DROP DATABASE WEATHER;", _conn); cmd.ExecuteNonQuery();
             }
@@ -175,18 +173,10 @@ namespace Nasa
 
         public void CreateDatabase()
         {
-            const string CreateString = "datasource=127.0.0.1;" + "port=3306;" + "username=root;" + "password=;";
-
-            var conn = new MySqlConnection(CreateString);
-
-            if (conn.State != System.Data.ConnectionState.Open)
+            using (MySqlConnection _conn = _connection.ReturnDBConnectionNoWeather())
             {
-                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("CREATE DATABASE IF NOT EXISTS WEATHER;", _conn); cmd.ExecuteNonQuery();
             }
-
-            MySqlCommand cmd = new MySqlCommand("CREATE DATABASE IF NOT EXISTS weather;", conn);
-            cmd.ExecuteNonQuery();
-            conn.Close();
         }
     }
 }

@@ -7,20 +7,16 @@
       "RelativeMoniker": "D:0:0:{B3FCCA9A-4A97-4D90-99B7-7CC23AFACF60}|Nasa\\Nasa.csproj|solutionrelative:nasa\\dbcreator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B3FCCA9A-4A97-4D90-99B7-7CC23AFACF60}|Nasa\\Nasa.csproj|c:\\users\\sskew\\desktop\\nasaproject\\nasa\\weatherform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B3FCCA9A-4A97-4D90-99B7-7CC23AFACF60}|Nasa\\Nasa.csproj|solutionrelative:nasa\\weatherform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{B3FCCA9A-4A97-4D90-99B7-7CC23AFACF60}|Nasa\\Nasa.csproj|C:\\Users\\sskew\\Desktop\\NasaProject\\nasa\\weatherform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{B3FCCA9A-4A97-4D90-99B7-7CC23AFACF60}|Nasa\\Nasa.csproj|solutionrelative:nasa\\weatherform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B3FCCA9A-4A97-4D90-99B7-7CC23AFACF60}|Nasa\\Nasa.csproj|c:\\users\\sskew\\desktop\\nasaproject\\nasa\\dbconnection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B3FCCA9A-4A97-4D90-99B7-7CC23AFACF60}|Nasa\\Nasa.csproj|solutionrelative:nasa\\dbconnection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B3FCCA9A-4A97-4D90-99B7-7CC23AFACF60}|Nasa\\Nasa.csproj|c:\\users\\sskew\\desktop\\nasaproject\\nasa\\weatherform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3FCCA9A-4A97-4D90-99B7-7CC23AFACF60}|Nasa\\Nasa.csproj|solutionrelative:nasa\\weatherform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B3FCCA9A-4A97-4D90-99B7-7CC23AFACF60}|Nasa\\Nasa.csproj|c:\\users\\sskew\\desktop\\nasaproject\\nasa\\apodconnection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B3FCCA9A-4A97-4D90-99B7-7CC23AFACF60}|Nasa\\Nasa.csproj|solutionrelative:nasa\\apodconnection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B3FCCA9A-4A97-4D90-99B7-7CC23AFACF60}|Nasa\\Nasa.csproj|c:\\users\\sskew\\desktop\\nasaproject\\nasa\\dbfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3FCCA9A-4A97-4D90-99B7-7CC23AFACF60}|Nasa\\Nasa.csproj|solutionrelative:nasa\\dbfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,73 +30,51 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "WeatherForm.cs",
-              "DocumentMoniker": "C:\\Users\\sskew\\Desktop\\NasaProject\\Nasa\\WeatherForm.cs",
-              "RelativeDocumentMoniker": "Nasa\\WeatherForm.cs",
-              "ToolTip": "C:\\Users\\sskew\\Desktop\\NasaProject\\Nasa\\WeatherForm.cs",
-              "RelativeToolTip": "Nasa\\WeatherForm.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAAAKcAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-18T21:23:56.046Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "WeatherForm.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\sskew\\Desktop\\NasaProject\\Nasa\\WeatherForm.cs",
-              "RelativeDocumentMoniker": "Nasa\\WeatherForm.cs",
-              "ToolTip": "C:\\Users\\sskew\\Desktop\\NasaProject\\Nasa\\WeatherForm.cs [Design]",
-              "RelativeToolTip": "Nasa\\WeatherForm.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-18T21:23:53.51Z",
-              "EditorCaption": " [Design]"
-            }
-          ]
-        },
-        {
-          "DockedWidth": 373,
-          "SelectedChildIndex": 2,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "DbConnection.cs",
-              "DocumentMoniker": "C:\\Users\\sskew\\Desktop\\NasaProject\\Nasa\\DbConnection.cs",
-              "RelativeDocumentMoniker": "Nasa\\DbConnection.cs",
-              "ToolTip": "C:\\Users\\sskew\\Desktop\\NasaProject\\Nasa\\DbConnection.cs",
-              "RelativeToolTip": "Nasa\\DbConnection.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAAABsAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-18T21:39:54.56Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "APODConnection.cs",
-              "DocumentMoniker": "C:\\Users\\sskew\\Desktop\\NasaProject\\Nasa\\APODConnection.cs",
-              "RelativeDocumentMoniker": "Nasa\\APODConnection.cs",
-              "ToolTip": "C:\\Users\\sskew\\Desktop\\NasaProject\\Nasa\\APODConnection.cs",
-              "RelativeToolTip": "Nasa\\APODConnection.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-18T21:39:53.686Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "DbCreator.cs",
               "DocumentMoniker": "C:\\Users\\sskew\\Desktop\\NasaProject\\Nasa\\DbCreator.cs",
               "RelativeDocumentMoniker": "Nasa\\DbCreator.cs",
               "ToolTip": "C:\\Users\\sskew\\Desktop\\NasaProject\\Nasa\\DbCreator.cs",
               "RelativeToolTip": "Nasa\\DbCreator.cs",
-              "ViewState": "AgIAAJUAAAAAAAAAAAAAAJ8AAAAPAAAAAAAAAA==",
+              "ViewState": "AgIAAD0AAAAAAAAAAAAswE4AAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-18T21:25:11.283Z",
+              "WhenOpened": "2026-01-21T19:54:58.951Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "WeatherForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\sskew\\Desktop\\NasaProject\\Nasa\\WeatherForm.cs",
+              "RelativeDocumentMoniker": "Nasa\\WeatherForm.cs",
+              "ToolTip": "C:\\Users\\sskew\\Desktop\\NasaProject\\Nasa\\WeatherForm.cs [Design]",
+              "RelativeToolTip": "Nasa\\WeatherForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-21T19:13:23.94Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DbFilter.cs",
+              "DocumentMoniker": "C:\\Users\\sskew\\Desktop\\NasaProject\\Nasa\\DbFilter.cs",
+              "RelativeDocumentMoniker": "Nasa\\DbFilter.cs",
+              "ToolTip": "C:\\Users\\sskew\\Desktop\\NasaProject\\Nasa\\DbFilter.cs",
+              "RelativeToolTip": "Nasa\\DbFilter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-21T19:05:32.088Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "WeatherForm.cs",
+              "DocumentMoniker": "C:\\Users\\sskew\\Desktop\\NasaProject\\Nasa\\WeatherForm.cs",
+              "RelativeDocumentMoniker": "Nasa\\WeatherForm.cs",
+              "ToolTip": "C:\\Users\\sskew\\Desktop\\NasaProject\\Nasa\\WeatherForm.cs",
+              "RelativeToolTip": "Nasa\\WeatherForm.cs",
+              "ViewState": "AgIAAEcAAAAAAAAAAAAAAFwAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-21T18:23:47.64Z"
             }
           ]
         }

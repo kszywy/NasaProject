@@ -50,7 +50,6 @@ namespace Nasa
                 cmd.Parameters.AddWithValue("@Hour", item.Hour);
                 cmd.ExecuteNonQuery();
             }
-            System.Diagnostics.Debug.WriteLine("Dodano wpis do bazy danych.");
         }
 
         private void ExecuteEarthInsert(MySqlConnection conn, EarthWeather item)
@@ -116,7 +115,6 @@ namespace Nasa
                 cmd.Parameters.AddWithValue("@MoonIllumination", item.MoonIllumination);
                 cmd.ExecuteNonQuery();
             }
-            System.Diagnostics.Debug.WriteLine("Dodano wpis do bazy danych.");
         }
 
         private void ProcessXmlIteratively(string filePath, MySqlConnection conn)
@@ -132,7 +130,6 @@ namespace Nasa
                     {
                         if (reader.Name == "EarthWeather")
                         {
-                            System.Diagnostics.Debug.WriteLine("GUACAMOLE1");
                             var item = (EarthWeather)earthSerializer.Deserialize(reader.ReadSubtree());
                             ExecuteEarthInsert(conn, item);
                         }
@@ -172,6 +169,21 @@ namespace Nasa
             }
         }
 
+        private void ImportFromSqlDump(string filePath, MySqlConnection conn)
+        {
+            using (conn)
+            {
+                using (MySqlCommand cmd = new MySqlCommand())
+                {
+                    using (MySqlBackup mb = new MySqlBackup(cmd))
+                    {
+                        cmd.Connection = conn;
+                        mb.ImportFromFile(filePath);
+                    }
+                }
+            }
+        }
+
         public void ImportData(string format, string filePath)
         {
             using (MySqlConnection conn = _connection.ReturnDBConnection())
@@ -184,6 +196,10 @@ namespace Nasa
                 else if (format.ToUpper() == "JSON")
                 {
                     ProcessJsonIteratively(filePath, conn);
+                }
+                else
+                {
+                    ImportFromSqlDump(filePath, conn);
                 }
             }
         }

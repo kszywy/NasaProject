@@ -21,7 +21,7 @@ namespace Nasa
         private List<SpaceWeatherCombined> filteredSpaceList = new List<SpaceWeatherCombined>();
         private List<EarthWeatherCombined> filteredEarthList = new List<EarthWeatherCombined>();
 
-        public void FilterSpaceWeather(DateOnly date)
+        private void FilterSpaceWeather(DateOnly date)
         {
             MySqlCommand cmd;
             MySqlDataReader reader;
@@ -29,11 +29,12 @@ namespace Nasa
             var _date = date.ToString("o", CultureInfo.InvariantCulture);
             using (MySqlConnection _conn = _connection.ReturnDBConnection())
             {
-                string query = $"SELECT id_space, event_id, event_type, begin_time, peak_time, end_time, class_type, source_location, active_region, instruments, note, date FROM spaceweather WHERE date=\"{date}\";";
-                cmd = new MySqlCommand(query);
+                string query = $"SELECT id_space, event_id, event_type, begin_time, peak_time, end_time, class_type, source_location, active_region, instruments, note, date FROM spaceweather WHERE date=\"{_date}\";";
+                cmd = new MySqlCommand(query, _conn);
                 reader = cmd.ExecuteReader();
                 if (reader.HasRows)
                 {
+                    
                     while (reader.Read())
                     {
                         this.filteredSpaceList.Add(new SpaceWeatherCombined(
@@ -56,7 +57,7 @@ namespace Nasa
             }
         }
 
-        public void FilterEarthWeather(DateOnly date)
+        private void FilterEarthWeather(DateOnly date)
         {
             MySqlCommand cmd;
             MySqlDataReader reader;
@@ -64,8 +65,8 @@ namespace Nasa
             var _date = date.ToString("o", CultureInfo.InvariantCulture);
             using (MySqlConnection _conn = _connection.ReturnDBConnection())
             {
-                string query = $"SELECT id_earth, country, location_name, timezone, date, temperature_celsius, condition_text, wind_kph, pressure_mb, humidity, cloud, feels_like_celsius FROM earthweather WHERE date=\"{date}\";";
-                cmd = new MySqlCommand(query);
+                string query = $"SELECT id_earth, country, location_name, timezone, date, temperature_celsius, condition_text, wind_kph, pressure_mb, humidity, cloud, feels_like_celsius, \"air_quality_us-epa-index\", \"air_quality_gb-defra-index\" FROM earthweather WHERE date=\"{_date}\";";
+                cmd = new MySqlCommand(query, _conn);
                 reader = cmd.ExecuteReader();
                 if (reader.HasRows)
                 {
@@ -83,7 +84,7 @@ namespace Nasa
                             reader.IsDBNull(8) ? null : reader.GetDouble(8),    // PressureMb
                             reader.IsDBNull(9) ? null : reader.GetInt32(9),     // Humidity
                             reader.IsDBNull(10) ? null : reader.GetInt32(10),   // Cloud
-                            reader.IsDBNull(11) ? null : reader.GetDouble(11)   // FeelsLikeCelsius
+                            reader.IsDBNull(11) ? null : reader.GetDouble(11)  // FeelsLikeCelsius
                         ));
                     }
                     reader.Close();
@@ -91,31 +92,66 @@ namespace Nasa
             }
         }
 
-        public void EnterFilteredSpaceWeatherToCombined()
+        private void EnterFilteredSpaceWeatherToCombined()
         {
             using (MySqlConnection _conn = _connection.ReturnDBConnection())
             {
                 foreach (var item in this.filteredSpaceList)
                 {
-                    string query = $"INSERT INTO spaceweathercombined (id_space, event_id, event_type, begin_time, peak_time, end_time, class_type, source_location, active_region, instruments, note, date) VALUES ({item.IdSpace}, \"{item.EventId}\", \"{item.EventType}\", \"{item.BeginTime}\", \"{item.PeakTime}\", \"{item.EndTime}\", \"{item.ClassType}\", \"{item.SourceLocation}\", \"{item.ActiveRegion}\", \"{item.Instruments}\", \"{item.Note}\", \"{item.Date}\");";
+                    string query = $"INSERT INTO spaceweathercombined (id_space, event_id, event_type, begin_time, peak_time, end_time, class_type, source_location, active_region, instruments, note, date) VALUES ({item.IdSpace}, \"{item.EventId}\", \"{item.EventType}\", \"{item.BeginTime}\", \"{item.PeakTime}\", \"{item.EndTime}\", \"{item.ClassType}\", \"{item.SourceLocation}\", \"{item.ActiveRegion}\", \"{item.Instruments}\", \"{item.Note}\", \"{item.Date.ToString("o", CultureInfo.InvariantCulture)}\");";
                     MySqlCommand cmd = new MySqlCommand(query, _conn);
                     cmd.ExecuteNonQuery();
                 }
             }
         }
 
-        public void EnterFilteredEarthWeatherToCombined()
+        private void EnterFilteredEarthWeatherToCombined()
         {
             using (MySqlConnection _conn = _connection.ReturnDBConnection())
             {
                 foreach (var item in this.filteredEarthList)
                 {
-                    string query = $"INSERT INTO earthweathercombined (id_earth, country, location_name, timezone, date, temperature_celsius, condition_text, wind_kph, pressure_mb, humidity, cloud, feels_like_celsius) VALUES ({item.IdEarth}, \"{item.Country}\", \"{item.LocationName}\", \"{item.Timezone}\", \"{item.Date}\", {item.TemperatureCelsius}, \"{item.ConditionText}\", {item.WindKph}, {item.PressureMb}, {item.Humidity}, {item.Cloud}, {item.FeelsLikeCelsius});";
+                    string query = $"INSERT INTO earthweathercombined (id_earth, country, location_name, timezone, date, temperature_celsius, condition_text, wind_kph, pressure_mb, humidity, cloud, feels_like_celsius) VALUES ({item.IdEarth}, \"{item.Country}\", \"{item.LocationName}\", \"{item.Timezone}\", \"{item.Date.ToString("o", CultureInfo.InvariantCulture)}\", {item.TemperatureCelsius.ToString().Replace(",", ".")}, \"{item.ConditionText}\", {item.WindKph.ToString().Replace(",", ".")}, {item.PressureMb.ToString().Replace(",", ".")}, {item.Humidity}, {item.Cloud}, {item.FeelsLikeCelsius.ToString().Replace(",", ".")});";
                     MySqlCommand cmd = new MySqlCommand(query, _conn);
                     cmd.ExecuteNonQuery();
                 }
             }
+        }
 
+        public void FilterAll(DateOnly date)
+        {
+            ClearCombinedTables();
+            this.filteredEarthList.Clear();
+            this.filteredSpaceList.Clear();
+
+            FilterEarthWeather(date);
+            FilterSpaceWeather(date);
+
+            EnterFilteredEarthWeatherToCombined();
+            EnterFilteredSpaceWeatherToCombined();
+            
+        }
+
+        public List<SpaceWeatherCombined> GetSpaceWeatherCombined()
+        {
+            return this.filteredSpaceList;
+        }
+
+        public List<EarthWeatherCombined> GetEarthWeatherCombined()
+        {
+            return this.filteredEarthList;
+        }
+
+        private void ClearCombinedTables()
+        {
+            using (MySqlConnection _conn = _connection.ReturnDBConnection())
+            {
+                string query = "DELETE FROM spaceweathercombined; DELETE FROM earthweathercombined;";
+                MySqlCommand cmdSpace = new MySqlCommand(query, _conn);
+                cmdSpace.ExecuteNonQuery();
+
+            }
         }
     }
 }
+

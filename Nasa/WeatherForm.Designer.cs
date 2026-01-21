@@ -39,15 +39,19 @@
             labelFilter = new Label();
             labelActivities = new Label();
             groupBoxImport = new GroupBox();
+            radioButtonImportSQL = new RadioButton();
             radioButtonImportJSON = new RadioButton();
             radioButtonImportXML = new RadioButton();
             groupBoxExport = new GroupBox();
+            radioButtonExportSQL = new RadioButton();
             radioButtonExportJSON = new RadioButton();
             radioButtonExportXML = new RadioButton();
             buttonPurgeDatabase = new Button();
             labelManageDatabase = new Label();
             buttonCreateDatabase = new Button();
-            button1 = new Button();
+            label1 = new Label();
+            textBoxHighestTemp = new TextBox();
+            labelTemp = new Label();
             ((System.ComponentModel.ISupportInitialize)APODPicture).BeginInit();
             groupBoxImport.SuspendLayout();
             groupBoxExport.SuspendLayout();
@@ -55,7 +59,8 @@
             // 
             // APODPicture
             // 
-            APODPicture.Location = new Point(43, 691);
+            APODPicture.Cursor = Cursors.Hand;
+            APODPicture.Location = new Point(61, 392);
             APODPicture.Margin = new Padding(2);
             APODPicture.MinimumSize = new Size(320, 320);
             APODPicture.Name = "APODPicture";
@@ -67,18 +72,19 @@
             // 
             // calendar
             // 
-            calendar.Location = new Point(43, 44);
+            calendar.FirstDayOfWeek = Day.Monday;
+            calendar.Location = new Point(618, 47);
             calendar.Margin = new Padding(6, 5, 6, 5);
             calendar.MaxDate = new DateTime(2025, 7, 11, 0, 0, 0, 0);
             calendar.MaxSelectionCount = 1;
             calendar.MinDate = new DateTime(2023, 7, 11, 0, 0, 0, 0);
             calendar.Name = "calendar";
             calendar.TabIndex = 1;
-            calendar.DateChanged += monthCalendar1_DateChanged;
+            calendar.DateChanged += calendar_DateChanged_1;
             // 
             // buttonImport
             // 
-            buttonImport.Location = new Point(44, 89);
+            buttonImport.Location = new Point(36, 118);
             buttonImport.Margin = new Padding(2);
             buttonImport.Name = "buttonImport";
             buttonImport.Size = new Size(116, 34);
@@ -89,7 +95,7 @@
             // 
             // buttonExport
             // 
-            buttonExport.Location = new Point(44, 89);
+            buttonExport.Location = new Point(43, 118);
             buttonExport.Margin = new Padding(2);
             buttonExport.Name = "buttonExport";
             buttonExport.Size = new Size(116, 34);
@@ -100,16 +106,21 @@
             // 
             // listViewSpace
             // 
-            listViewSpace.Location = new Point(43, 250);
+            listViewSpace.BackColor = Color.MediumSeaGreen;
+            listViewSpace.Cursor = Cursors.Hand;
+            listViewSpace.FullRowSelect = true;
+            listViewSpace.GridLines = true;
+            listViewSpace.Location = new Point(911, 47);
             listViewSpace.Name = "listViewSpace";
-            listViewSpace.Size = new Size(641, 185);
+            listViewSpace.Size = new Size(1249, 185);
             listViewSpace.TabIndex = 12;
             listViewSpace.UseCompatibleStateImageBehavior = false;
+            listViewSpace.View = View.Details;
             // 
             // labelReturnSpace
             // 
             labelReturnSpace.AutoSize = true;
-            labelReturnSpace.Location = new Point(43, 232);
+            labelReturnSpace.Location = new Point(911, 29);
             labelReturnSpace.Margin = new Padding(2, 0, 2, 0);
             labelReturnSpace.Name = "labelReturnSpace";
             labelReturnSpace.Size = new Size(168, 15);
@@ -119,7 +130,7 @@
             // labelReturnEarth
             // 
             labelReturnEarth.AutoSize = true;
-            labelReturnEarth.Location = new Point(43, 465);
+            labelReturnEarth.Location = new Point(911, 262);
             labelReturnEarth.Margin = new Padding(2, 0, 2, 0);
             labelReturnEarth.Name = "labelReturnEarth";
             labelReturnEarth.Size = new Size(154, 15);
@@ -128,16 +139,18 @@
             // 
             // listViewEarth
             // 
-            listViewEarth.Location = new Point(43, 483);
+            listViewEarth.BackColor = Color.MediumAquamarine;
+            listViewEarth.Cursor = Cursors.Hand;
+            listViewEarth.Location = new Point(911, 280);
             listViewEarth.Name = "listViewEarth";
-            listViewEarth.Size = new Size(641, 185);
+            listViewEarth.Size = new Size(1249, 185);
             listViewEarth.TabIndex = 14;
             listViewEarth.UseCompatibleStateImageBehavior = false;
             // 
             // labelFilter
             // 
             labelFilter.AutoSize = true;
-            labelFilter.Location = new Point(43, 24);
+            labelFilter.Location = new Point(618, 27);
             labelFilter.Name = "labelFilter";
             labelFilter.Size = new Size(130, 15);
             labelFilter.TabIndex = 16;
@@ -146,7 +159,7 @@
             // labelActivities
             // 
             labelActivities.AutoSize = true;
-            labelActivities.Location = new Point(784, 24);
+            labelActivities.Location = new Point(90, 27);
             labelActivities.Name = "labelActivities";
             labelActivities.Size = new Size(107, 15);
             labelActivities.TabIndex = 17;
@@ -154,15 +167,28 @@
             // 
             // groupBoxImport
             // 
+            groupBoxImport.Controls.Add(radioButtonImportSQL);
             groupBoxImport.Controls.Add(radioButtonImportJSON);
             groupBoxImport.Controls.Add(radioButtonImportXML);
             groupBoxImport.Controls.Add(buttonImport);
-            groupBoxImport.Location = new Point(837, 67);
+            groupBoxImport.Location = new Point(92, 57);
             groupBoxImport.Name = "groupBoxImport";
-            groupBoxImport.Size = new Size(200, 157);
+            groupBoxImport.Size = new Size(200, 168);
             groupBoxImport.TabIndex = 18;
             groupBoxImport.TabStop = false;
             groupBoxImport.Text = "Importuj z formatu";
+            // 
+            // radioButtonImportSQL
+            // 
+            radioButtonImportSQL.AutoSize = true;
+            radioButtonImportSQL.Location = new Point(21, 80);
+            radioButtonImportSQL.Name = "radioButtonImportSQL";
+            radioButtonImportSQL.Size = new Size(46, 19);
+            radioButtonImportSQL.TabIndex = 11;
+            radioButtonImportSQL.TabStop = true;
+            radioButtonImportSQL.Text = "SQL";
+            radioButtonImportSQL.TextImageRelation = TextImageRelation.TextBeforeImage;
+            radioButtonImportSQL.UseVisualStyleBackColor = true;
             // 
             // radioButtonImportJSON
             // 
@@ -189,15 +215,28 @@
             // 
             // groupBoxExport
             // 
+            groupBoxExport.Controls.Add(radioButtonExportSQL);
             groupBoxExport.Controls.Add(radioButtonExportJSON);
             groupBoxExport.Controls.Add(radioButtonExportXML);
             groupBoxExport.Controls.Add(buttonExport);
-            groupBoxExport.Location = new Point(837, 250);
+            groupBoxExport.Location = new Point(328, 57);
             groupBoxExport.Name = "groupBoxExport";
-            groupBoxExport.Size = new Size(200, 157);
+            groupBoxExport.Size = new Size(200, 168);
             groupBoxExport.TabIndex = 19;
             groupBoxExport.TabStop = false;
             groupBoxExport.Text = "Eksportuj do formatu";
+            // 
+            // radioButtonExportSQL
+            // 
+            radioButtonExportSQL.AutoSize = true;
+            radioButtonExportSQL.Location = new Point(21, 80);
+            radioButtonExportSQL.Name = "radioButtonExportSQL";
+            radioButtonExportSQL.Size = new Size(46, 19);
+            radioButtonExportSQL.TabIndex = 12;
+            radioButtonExportSQL.TabStop = true;
+            radioButtonExportSQL.Text = "SQL";
+            radioButtonExportSQL.TextImageRelation = TextImageRelation.TextBeforeImage;
+            radioButtonExportSQL.UseVisualStyleBackColor = true;
             // 
             // radioButtonExportJSON
             // 
@@ -223,7 +262,7 @@
             // 
             // buttonPurgeDatabase
             // 
-            buttonPurgeDatabase.Location = new Point(837, 565);
+            buttonPurgeDatabase.Location = new Point(196, 316);
             buttonPurgeDatabase.Margin = new Padding(2);
             buttonPurgeDatabase.Name = "buttonPurgeDatabase";
             buttonPurgeDatabase.Size = new Size(116, 54);
@@ -235,7 +274,7 @@
             // labelManageDatabase
             // 
             labelManageDatabase.AutoSize = true;
-            labelManageDatabase.Location = new Point(784, 517);
+            labelManageDatabase.Location = new Point(194, 298);
             labelManageDatabase.Name = "labelManageDatabase";
             labelManageDatabase.Size = new Size(125, 15);
             labelManageDatabase.TabIndex = 21;
@@ -243,7 +282,7 @@
             // 
             // buttonCreateDatabase
             // 
-            buttonCreateDatabase.Location = new Point(837, 633);
+            buttonCreateDatabase.Location = new Point(316, 316);
             buttonCreateDatabase.Margin = new Padding(2);
             buttonCreateDatabase.Name = "buttonCreateDatabase";
             buttonCreateDatabase.Size = new Size(116, 54);
@@ -252,22 +291,40 @@
             buttonCreateDatabase.UseVisualStyleBackColor = true;
             buttonCreateDatabase.Click += buttonCreateDatabase_Click;
             // 
-            // button1
+            // label1
             // 
-            button1.Location = new Point(445, 67);
-            button1.Margin = new Padding(2);
-            button1.Name = "button1";
-            button1.Size = new Size(116, 34);
-            button1.TabIndex = 23;
-            button1.Text = "Filtruj";
-            button1.UseVisualStyleBackColor = true;
+            label1.AutoSize = true;
+            label1.Location = new Point(39, 235);
+            label1.Name = "label1";
+            label1.Size = new Size(576, 30);
+            label1.TabIndex = 23;
+            label1.Text = "UWAGA!\r\nPrzy imporcie za pomocą SQL należy zwiększyć max_allowed_packet w pliku konfiguracyjnym MySQL my.ini";
+            // 
+            // textBoxHighestTemp
+            // 
+            textBoxHighestTemp.Location = new Point(1180, 498);
+            textBoxHighestTemp.Name = "textBoxHighestTemp";
+            textBoxHighestTemp.ReadOnly = true;
+            textBoxHighestTemp.Size = new Size(75, 23);
+            textBoxHighestTemp.TabIndex = 24;
+            // 
+            // labelTemp
+            // 
+            labelTemp.AutoSize = true;
+            labelTemp.Location = new Point(911, 501);
+            labelTemp.Name = "labelTemp";
+            labelTemp.Size = new Size(266, 15);
+            labelTemp.TabIndex = 25;
+            labelTemp.Text = "Najwyższa zarejestrowana temperatura tego dnia:";
             // 
             // WeatherForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1341, 1242);
-            Controls.Add(button1);
+            ClientSize = new Size(2179, 936);
+            Controls.Add(labelTemp);
+            Controls.Add(textBoxHighestTemp);
+            Controls.Add(label1);
             Controls.Add(buttonCreateDatabase);
             Controls.Add(labelManageDatabase);
             Controls.Add(buttonPurgeDatabase);
@@ -284,6 +341,7 @@
             Margin = new Padding(2);
             Name = "WeatherForm";
             Text = "Form1";
+            Load += WeatherForm_Load;
             ((System.ComponentModel.ISupportInitialize)APODPicture).EndInit();
             groupBoxImport.ResumeLayout(false);
             groupBoxImport.PerformLayout();
@@ -314,6 +372,10 @@
         private Button buttonPurgeDatabase;
         private Label labelManageDatabase;
         private Button buttonCreateDatabase;
-        private Button button1;
+        private RadioButton radioButtonImportSQL;
+        private RadioButton radioButtonExportSQL;
+        private Label label1;
+        private TextBox textBoxHighestTemp;
+        private Label labelTemp;
     }
 }
